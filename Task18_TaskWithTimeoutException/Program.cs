@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-
-class Program
+﻿class Program
 {
     static async Task Main(string[] args)
     {
@@ -16,10 +12,10 @@ class Program
 
             if (completedTask == timeoutTask)
             {
-                throw new TimeoutException("Task təyin olunan zaman ərzində tamamlanmadı.");
+                throw new TimeoutException("The task did not complete within the specified time.");
             }
 
-            Console.WriteLine("Task nəticəsi: " + await task);
+            Console.WriteLine("Task result: " + await task);
         }
         catch (TimeoutException ex)
         {
@@ -30,6 +26,6 @@ class Program
     static async Task<string> SomeLongRunningTask()
     {
         await Task.Delay(5000);
-        return "Task tamamlandı!";
+        return "Task completed!";
     }
 }
